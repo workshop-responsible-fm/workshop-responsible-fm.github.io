@@ -12,6 +12,9 @@
 <body>
 <header>
   <div class="header-content">
+    <a class="nips-logo-link" href="https://neurips.cc" target="_blank" rel="noopener noreferrer">
+      <img src="images/nips_logo.png" alt="NeurIPS 2025" class="nips-logo">
+    </a>
     <h1>Socially Responsible and Trustworthy Foundation Models (ResponsibleFM)</h1>
     <div class="subtitle">NeurIPS 2025 Workshop · Hilton Mexico City Reforma</div>
     <nav>
@@ -27,7 +30,7 @@
 </header>
 
 <main>
-  <section id="about">
+  <section id="about" class="reveal">
     <h2>About</h2>
     <div class="content-wrapper">
       <p>
@@ -39,7 +42,7 @@
     </div>
   </section>
 
-  <section id="topics">
+  <section id="topics" class="reveal">
     <h2>Topics</h2>
     <div class="content-wrapper">
       <ul>
@@ -93,7 +96,7 @@
   </section>
   
 
-  <section id="schedule">
+  <section id="schedule" class="reveal">
     <h2>Schedule</h2>
     <div class="content-wrapper">
       <ul class="timeline">
@@ -111,7 +114,7 @@
     </div>
   </section>
 
-  <section id="speakers">
+  <section id="speakers" class="reveal">
     <h2>Invited Speakers</h2>
     <div class="speakers-list">
       <div class="speaker-card">
@@ -177,7 +180,7 @@
     </div>
   </section>
 
-  <section id="organizers">
+  <section id="organizers" class="reveal">
     <h2>Organizers</h2>
     <div class="organizer-list">
       <div class="organizer-card">
@@ -246,7 +249,7 @@
     </div>
   </section>
 
-  <section id="call">
+  <section id="call" class="reveal">
     <h2>Call for Papers / Submission</h2>
     <div class="content-wrapper">
       <div class="important-dates">
@@ -288,7 +291,7 @@
     </div>
   </section>
 
-  <section id="committee">
+  <section id="committee" class="reveal">
     <h2>Program Committee</h2>
     <div class="content-wrapper">
       <p>
@@ -303,5 +306,23 @@
     &copy; 2025 Socially Responsible and Trustworthy Foundation Models Workshop &middot; NeurIPS 2025
   </div>
 </footer>
+<script>
+  (function() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  })();
+</script>
 </body>
 </html>

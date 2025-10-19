@@ -54,6 +54,7 @@ header::before {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
+  background-attachment: fixed;
 }
 
 header h1 {
@@ -117,6 +118,13 @@ section {
 }
 
 /* no hover lift for sober style */
+
+/* Subtle card hover */
+.speaker-card:hover, .organizer-card:hover, #schedule li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
 h2 {
   color: var(--primary);
@@ -244,6 +252,31 @@ footer {
   padding: 0 20px;
   position: relative;
   z-index: 1;
+}
+
+/* NeurIPS logo */
+.nips-logo-link {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 2;
+}
+
+.nips-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  background: rgba(255,255,255,0.96);
+  border-radius: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nips-logo-link:hover .nips-logo {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 /* .subtitle overridden above */
@@ -379,6 +412,25 @@ html {
 }
 
 /* remove entrance animation */
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nips-logo, .speaker-card, .organizer-card, #schedule li, .reveal {
+    transition: none !important;
+    transform: none !important;
+  }
+}
 
 a {
   color: var(--primary);
