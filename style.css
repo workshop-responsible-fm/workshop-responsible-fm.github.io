@@ -442,6 +442,22 @@ a:hover {
   color: var(--primary-dark);
 }
 
+/* Highlight OpenReview link distinctly */
+.openreview-link {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.openreview-link:hover,
+.openreview-link:focus-visible {
+  color: #1d4ed8;
+}
+
+.openreview-link:visited {
+  color: #7c3aed;
+}
+
 main {
   max-width: 1200px;
   margin: 0 auto;
